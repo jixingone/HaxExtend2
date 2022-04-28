@@ -10,7 +10,8 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: macos-latest
+    # runs-on: windows-latest
     steps:
         - name: 'Checkout codes'
           uses: actions/checkout@v2
@@ -28,5 +29,6 @@ jobs:
             PASSWORD: ${{ secrets.PASSWORD }}
             BARKKEY: ${{ secrets.BARKKEY }}
           run: |
+            curl https://hax.co.id/login
             python3 ./main.py
         
