@@ -169,12 +169,14 @@ driver.find_element(By.XPATH, '//*[@id="text"]').send_keys(USERNAME)
 print('fill password')
 driver.find_element(By.XPATH, '//*[@id="password"]').send_keys(PASSWORD)
 delay()
+
 # reCAPTCHA
 print('do reCAPTCHA')
 reCAPTCHA()
 time.sleep(10)
-# login
 driver.switch_to.default_content()
+
+# login
 print('click login')
 driver.find_element(By.NAME, 'login').click()
 time.sleep(10)
@@ -191,11 +193,13 @@ driver.find_element(By.XPATH,'//*[@id="captcha"]').send_keys(CAPTCHA())
 # agreement check
 print('click agreement')
 driver.find_element(By.NAME, 'agreement').click()
-# reCAPTCHA again
-print('do reCAPTCHA')
-reCAPTCHA()
-time.sleep(10)
-driver.switch_to.default_content()
+
+## reCAPTCHA again
+# print('do reCAPTCHA')
+# reCAPTCHA()
+# time.sleep(10)
+# driver.switch_to.default_content()
+
 # submit_button (Renew VPS)
 print('click Renew VPS')
 driver.find_element(By.NAME, 'submit_button').click()
