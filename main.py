@@ -4,6 +4,7 @@
 """
 import os
 import sys
+import platform
 import time
 import random
 import urllib
@@ -147,6 +148,16 @@ def barkPush(body):
     elif barkKey == 0:
         print('No barkKey, Body is:', body)
 
+def diffPlatformDriverPath():
+    sysstr = platform.system()
+    if sysstr == "Windows":
+        path = os.getcwd()+"\\chromedriver.exe"
+    elif sysstr == "Linux":
+        path = os.getcwd()+"/chromedriver"
+    else:
+        path = os.getcwd()+"/chromedriver"
+    return path
+
 try:
     # create chrome driver
     Options = webdriver.ChromeOptions()
@@ -154,7 +165,7 @@ try:
     Options.add_argument('--no-sandbox')
     Options.add_argument('--disable-gpu')
     Options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(options=Options)
+    driver = webdriver.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
     delay()
     # go to website which have recaptcha protection
     driver.get(urlLogin)
