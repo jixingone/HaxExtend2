@@ -10,8 +10,8 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
-    # runs-on: windows-latest
+#    runs-on: macos-latest
+     runs-on: windows-latest
     steps:
         - name: 'Checkout codes'
           uses: actions/checkout@v2

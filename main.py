@@ -156,6 +156,7 @@ def diffPlatformDriverPath():
         path = os.getcwd()+"/chromedriver"
     else:
         path = os.getcwd()+"/chromedriver"
+    print("path: ", path)
     return path
 
 try:
