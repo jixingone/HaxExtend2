@@ -187,14 +187,17 @@ def init():
     try:
         # create chrome driver
         # Options = webdriver.ChromeOptions()
-        # Options = uc.ChromeOptions()
-        # Options.add_argument('--headless')
-        # Options.add_argument('--no-sandbox')
-        # Options.add_argument('--disable-gpu')
-        # Options.add_argument('--disable-dev-shm-usage')
+        options = uc.ChromeOptions()
+        # 浏览器不提供可视化界面
+        options.add_argument('--headless')
+        # 隐藏正受到自动测试软件的控制
+        # options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--disable-dev-shm-usage')
         # driver = webdriver.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
-        # driver = uc.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
-        driver = uc.Chrome()
+        driver = uc.Chrome(options=options)
+        # driver = uc.Chrome()
         delay()
         # go to website which have recaptcha protection
         driver.get(urlLogin)
@@ -236,6 +239,10 @@ if __name__ == '__main__':
     # Extend VPS link
     print('click Extend VPS')
     WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.LINK_TEXT, 'Extend VPS Expiration'))).click()
+    while "vps-renew" not in driver.current_url:
+        print("URL: "+driver.current_url)
+        time.sleep(5)
+
     time.sleep(10)
     # input web address
     print('fill web address')
