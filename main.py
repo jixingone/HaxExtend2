@@ -242,10 +242,16 @@ if __name__ == '__main__':
     driver.switch_to.default_content()
 
     # login
-    # print('click login')
+    print('click login')
+    while "login" not in driver.current_url:
+        print("URL: "+driver.current_url)
+    time.sleep(5)
     # print("URL: "+driver.current_url)
     driver.find_element(By.NAME, 'login').click()
     time.sleep(10)
+    while "vps-info" not in driver.current_url:
+        print("URL: "+driver.current_url)
+        time.sleep(5)
     # print("URL: "+driver.current_url)
     # Extend VPS link
     print('click Extend VPS')
