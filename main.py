@@ -264,6 +264,7 @@ if __name__ == '__main__':
     # input web address
     print('fill web address')
     print(driver.find_elements(By.TAG_NAME, "body")[0].text)
+    driver.find_element(By.LINK_TEXT, 'Extend VPS').click()
     driver.find_element(By.XPATH, '//*[@id="web_address"]').send_keys('hax.co.id')
     # captcha
     print('do CAPTCHA')
