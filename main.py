@@ -159,6 +159,19 @@ def diffPlatformDriverPath():
     print("path: ", path)
     return path
 
+
+def jumpCF():
+    flag = True
+    try:
+        driver.find_element(By.CLASS_NAME, "cf-browser-verification")
+    except Exception as e:
+        flag = False
+    if flag is True:
+        print(driver.find_elements(By.TAG_NAME, "body")[0].text)
+        time.sleep(10)
+        jumpCF()
+
+
 try:
     # create chrome driver
     Options = webdriver.ChromeOptions()
@@ -173,8 +186,10 @@ try:
 
     # all_es = driver.find_elements(By.XPATH, '//*')
     # print("[ALL_elements] ", all_es)
-    # driver.find_elements(By.CLASS_NAME, "cf-browser-verification")
+    jumpCF()
+
     print(driver.find_elements(By.TAG_NAME, "body")[0].text)
+    time.sleep(10)
 
 except Exception as e:
     sys.exit(
