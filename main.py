@@ -259,6 +259,7 @@ if __name__ == '__main__':
     #     print("URL: "+driver.current_url)
     #     time.sleep(5)
     time.sleep(10)
+    driver.switch_to.default_content()
 
     # input web address
     print('fill web address')
