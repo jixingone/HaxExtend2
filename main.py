@@ -184,6 +184,10 @@ def jumpCF():
 
 def init():
     try:
+        # show my public ip
+        ip = requests.get('https://checkip.amazonaws.com').text.strip()
+        print("[My Public IP]", ip)
+
         # create chrome driver
         # Options = webdriver.ChromeOptions()
         options = uc.ChromeOptions()
