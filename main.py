@@ -196,7 +196,7 @@ def init():
         # 浏览器不提供可视化界面
         # options.add_argument('--headless')
         options.add_argument('--incognito')
-        options.add_argument('--disable-infobars')
+        # options.add_argument('--disable-infobars')
         # 隐藏正受到自动测试软件的控制
         ## options.add_experimental_option("excludeSwitches", ["enable-automation"])
         # options.add_argument('--no-sandbox')
@@ -242,15 +242,15 @@ if __name__ == '__main__':
     driver.switch_to.default_content()
 
     # login
-    print('click login')
-    print("URL: "+driver.current_url)
+    # print('click login')
+    # print("URL: "+driver.current_url)
     driver.find_element(By.NAME, 'login').click()
     time.sleep(10)
-    print("URL: "+driver.current_url)
+    # print("URL: "+driver.current_url)
     # Extend VPS link
     print('click Extend VPS')
     WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.LINK_TEXT, 'Extend VPS Expiration'))).click()
-    print("URL: "+driver.current_url)
+    # print("URL: "+driver.current_url)
     # while "vps-renew" not in driver.current_url:
     #     print("URL: "+driver.current_url)
     #     time.sleep(5)
