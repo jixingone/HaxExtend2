@@ -253,20 +253,20 @@ if __name__ == '__main__':
     # Extend VPS link
     print('click Extend VPS')
     # WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.LINK_TEXT, 'Extend VPS Expiration'))).click()
-    driver.find_elements(By.LINK_TEXT, 'Extend VPS Expiration').click()
+    driver.find_element(By.LINK_TEXT, 'Extend VPS Expiration').click()
     # print("URL: "+driver.current_url)
     # while "vps-renew" not in driver.current_url:
     #     print("URL: "+driver.current_url)
     #     time.sleep(5)
 
-    time.sleep(20)
+    time.sleep(10)
     # input web address
     print('fill web address')
     # print(driver.find_elements(By.TAG_NAME, "body")[0].text)
     driver.find_element(By.XPATH, '//*[@id="web_address"]').send_keys('hax.co.id')
     # captcha
     print('do CAPTCHA')
-    driver.find_element(By.XPATH,'//*[@id="captcha"]').send_keys(CAPTCHA())
+    driver.find_element(By.XPATH, '//*[@id="captcha"]').send_keys(CAPTCHA())
     # agreement check
     print('click agreement')
     driver.find_element(By.NAME, 'agreement').click()
@@ -282,7 +282,8 @@ if __name__ == '__main__':
     driver.find_element(By.NAME, 'submit_button').click()
     time.sleep(15)
     print('copy text')
-    body = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="response"]/div'))).text
+    # body = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="response"]/div'))).text
+    body = driver.find_element(By.XPATH, '//*[@id="response"]/div').text
     # print('textBody:', body)
     delay()
     print('bark push')
