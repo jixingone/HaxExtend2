@@ -185,22 +185,23 @@ def jumpCF():
 
 
 try:
-    jumpCF()
     # create chrome driver
     # Options = webdriver.ChromeOptions()
-    Options = uc.ChromeOptions()
-    Options.add_argument('--headless')
-    Options.add_argument('--no-sandbox')
-    Options.add_argument('--disable-gpu')
-    Options.add_argument('--disable-dev-shm-usage')
+    # Options = uc.ChromeOptions()
+    # Options.add_argument('--headless')
+    # Options.add_argument('--no-sandbox')
+    # Options.add_argument('--disable-gpu')
+    # Options.add_argument('--disable-dev-shm-usage')
     # driver = webdriver.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
-    driver = uc.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
+    # driver = uc.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
+    driver = uc.Chrome()
     delay()
     # go to website which have recaptcha protection
     driver.get(urlLogin)
 
     # all_es = driver.find_elements(By.XPATH, '//*')
     # print("[ALL_elements] ", all_es)
+    jumpCF()
 
     print(driver.find_elements(By.TAG_NAME, "body")[0].text)
     time.sleep(10)
@@ -210,52 +211,53 @@ except Exception as e:
         "[-] Please update the chromedriver in the webdriver folder according to your chrome version:https://chromedriver.chromium.org/downloads")
 
 # main
-time.sleep(10)
-print('fill username')
-driver.find_element(By.XPATH, '//*[@id="text"]').send_keys(USERNAME)
-print('fill password')
-driver.find_element(By.XPATH, '//*[@id="password"]').send_keys(PASSWORD)
-delay()
+if __name__ == '__main__':
+    time.sleep(10)
+    print('fill username')
+    driver.find_element(By.XPATH, '//*[@id="text"]').send_keys(USERNAME)
+    print('fill password')
+    driver.find_element(By.XPATH, '//*[@id="password"]').send_keys(PASSWORD)
+    delay()
 
-# reCAPTCHA
-print('do reCAPTCHA')
-reCAPTCHA()
-time.sleep(10)
-driver.switch_to.default_content()
+    # reCAPTCHA
+    print('do reCAPTCHA')
+    reCAPTCHA()
+    time.sleep(10)
+    driver.switch_to.default_content()
 
-# login
-print('click login')
-driver.find_element(By.NAME, 'login').click()
-time.sleep(10)
-# Extend VPS link
-print('click Extend VPS')
-WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.LINK_TEXT, 'Extend VPS Expiration'))).click()
-time.sleep(10)
-# input web address
-print('fill web address')
-driver.find_element(By.XPATH, '//*[@id="web_address"]').send_keys('hax.co.id')
-# captcha
-print('do CAPTCHA')
-driver.find_element(By.XPATH,'//*[@id="captcha"]').send_keys(CAPTCHA())
-# agreement check
-print('click agreement')
-driver.find_element(By.NAME, 'agreement').click()
+    # login
+    print('click login')
+    driver.find_element(By.NAME, 'login').click()
+    time.sleep(10)
+    # Extend VPS link
+    print('click Extend VPS')
+    WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.LINK_TEXT, 'Extend VPS Expiration'))).click()
+    time.sleep(10)
+    # input web address
+    print('fill web address')
+    driver.find_element(By.XPATH, '//*[@id="web_address"]').send_keys('hax.co.id')
+    # captcha
+    print('do CAPTCHA')
+    driver.find_element(By.XPATH,'//*[@id="captcha"]').send_keys(CAPTCHA())
+    # agreement check
+    print('click agreement')
+    driver.find_element(By.NAME, 'agreement').click()
 
-## reCAPTCHA again
-# print('do reCAPTCHA')
-# reCAPTCHA()
-# time.sleep(10)
-# driver.switch_to.default_content()
+    ## reCAPTCHA again
+    # print('do reCAPTCHA')
+    # reCAPTCHA()
+    # time.sleep(10)
+    # driver.switch_to.default_content()
 
-# submit_button (Renew VPS)
-print('click Renew VPS')
-driver.find_element(By.NAME, 'submit_button').click()
-time.sleep(15)
-print('copy text')
-body = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="response"]/div'))).text
-# print('textBody:', body)
-delay()
-print('bark push')
-barkPush(body)
-delay()
-driver.quit()
+    # submit_button (Renew VPS)
+    print('click Renew VPS')
+    driver.find_element(By.NAME, 'submit_button').click()
+    time.sleep(15)
+    print('copy text')
+    body = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="response"]/div'))).text
+    # print('textBody:', body)
+    delay()
+    print('bark push')
+    barkPush(body)
+    delay()
+    driver.quit()
