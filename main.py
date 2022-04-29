@@ -215,7 +215,7 @@ def init():
 # main
 if __name__ == '__main__':
     driver = init()
-    WebDriverWait(driver, 20).until(EC.frame_to_be_available_and_switch_to_it((By.CSS_SELECTOR,"iframeCssSelector")))
+    # WebDriverWait(driver, 20).until(EC.frame_to_be_available_and_switch_to_it((By.CSS_SELECTOR,"iframeCssSelector")))
     # driver.switch_to.default_content()
     time.sleep(10)
     print('fill username')
