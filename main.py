@@ -170,6 +170,12 @@ try:
     delay()
     # go to website which have recaptcha protection
     driver.get(urlLogin)
+
+    # all_es = driver.find_elements(By.XPATH, '//*')
+    # print("[ALL_elements] ", all_es)
+    # driver.find_elements(By.CLASS_NAME, "cf-browser-verification")
+    print(driver.find_elements(By.TAG_NAME, "body")[0].text)
+
 except Exception as e:
     sys.exit(
         "[-] Please update the chromedriver in the webdriver folder according to your chrome version:https://chromedriver.chromium.org/downloads")
