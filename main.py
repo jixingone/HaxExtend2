@@ -183,35 +183,37 @@ def jumpCF():
     else:
         print("end jumpCF")
 
+def init():
+    try:
+        # create chrome driver
+        # Options = webdriver.ChromeOptions()
+        # Options = uc.ChromeOptions()
+        # Options.add_argument('--headless')
+        # Options.add_argument('--no-sandbox')
+        # Options.add_argument('--disable-gpu')
+        # Options.add_argument('--disable-dev-shm-usage')
+        # driver = webdriver.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
+        # driver = uc.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
+        driver = uc.Chrome()
+        delay()
+        # go to website which have recaptcha protection
+        driver.get(urlLogin)
 
-try:
-    # create chrome driver
-    # Options = webdriver.ChromeOptions()
-    # Options = uc.ChromeOptions()
-    # Options.add_argument('--headless')
-    # Options.add_argument('--no-sandbox')
-    # Options.add_argument('--disable-gpu')
-    # Options.add_argument('--disable-dev-shm-usage')
-    # driver = webdriver.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
-    # driver = uc.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
-    driver = uc.Chrome()
-    delay()
-    # go to website which have recaptcha protection
-    driver.get(urlLogin)
+        # all_es = driver.find_elements(By.XPATH, '//*')
+        # print("[ALL_elements] ", all_es)
+        jumpCF()
 
-    # all_es = driver.find_elements(By.XPATH, '//*')
-    # print("[ALL_elements] ", all_es)
-    jumpCF()
+        print(driver.find_elements(By.TAG_NAME, "body")[0].text)
+        time.sleep(10)
+        return driver
 
-    print(driver.find_elements(By.TAG_NAME, "body")[0].text)
-    time.sleep(10)
-
-except Exception as e:
-    sys.exit(
-        "[-] Please update the chromedriver in the webdriver folder according to your chrome version:https://chromedriver.chromium.org/downloads")
+    except Exception as e:
+        sys.exit(
+            "[-] Please update the chromedriver in the webdriver folder according to your chrome version:https://chromedriver.chromium.org/downloads")
 
 # main
 if __name__ == '__main__':
+    driver = init()
     time.sleep(10)
     print('fill username')
     driver.find_element(By.XPATH, '//*[@id="text"]').send_keys(USERNAME)
