@@ -211,8 +211,8 @@ def init():
         return driver
 
     except Exception as e:
-        sys.exit(
-            "[-] Please update the chromedriver in the webdriver folder according to your chrome version:https://chromedriver.chromium.org/downloads")
+        print(e)
+        # sys.exit("[-] Please update the chromedriver in the webdriver folder according to your chrome version:https://chromedriver.chromium.org/downloads")
 
 # main
 if __name__ == '__main__':
