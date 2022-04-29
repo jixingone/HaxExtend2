@@ -166,8 +166,8 @@ def jumpCF():
 
     scraper = cloudscraper.create_scraper()  # returns a CloudScraper instance
     # Or: scraper = cloudscraper.CloudScraper()  # CloudScraper inherits from requests.Session
-    scraper.get(urlLogin)
-    # print(scraper.get(urlLogin).text)  # => "<!DOCTYPE html><html><head>..."
+    sc = scraper.get(urlLogin)
+    print(sc.text)  # => "<!DOCTYPE html><html><head>..."
 
     try:
         print("start jumpCF")
@@ -177,7 +177,7 @@ def jumpCF():
         flag = False
     if flag is True:
         print("while jumpCF")
-        print(driver.find_elements(By.TAG_NAME, "body")[0].text)
+        # print(driver.find_elements(By.TAG_NAME, "body")[0].text)
         time.sleep(6)
         jumpCF()
     else:
