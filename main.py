@@ -246,7 +246,8 @@ if __name__ == '__main__':
     #     print("URL: "+str(driver.current_url))
     # time.sleep(5)
     driver.find_element(By.NAME, 'login').click()
-    time.sleep(10)
+    time.sleep(50)
+    driver.switch_to.default_content()
     # while "vps-info" not in str(driver.current_url):
     #     print("URL: "+str(driver.current_url))
     #     time.sleep(5)
