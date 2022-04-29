@@ -193,7 +193,7 @@ def init():
         # Options = webdriver.ChromeOptions()
         options = uc.ChromeOptions()
         # 浏览器不提供可视化界面
-        options.add_argument('--headless')
+        # options.add_argument('--headless')
         options.add_argument('--incognito')
         options.add_argument('--disable-infobars')
         # 隐藏正受到自动测试软件的控制
