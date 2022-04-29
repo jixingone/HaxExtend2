@@ -110,6 +110,7 @@ def reCAPTCHA():
                 err = driver.find_elements(By.CLASS_NAME, 'rc-audiochallenge-error-message')[0]
                 if err.text == "" or err.value_of_css_property('display') == 'none':
                     print("[INFO] Success!")
+                    driver.switch_to.default_content()
                     break
 
         except Exception as e:
@@ -242,8 +243,10 @@ if __name__ == '__main__':
 
     # login
     print('click login')
+    print("URL: "+driver.current_url)
     driver.find_element(By.NAME, 'login').click()
     time.sleep(10)
+    print("URL: "+driver.current_url)
     # Extend VPS link
     print('click Extend VPS')
     WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.LINK_TEXT, 'Extend VPS Expiration'))).click()
