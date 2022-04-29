@@ -182,11 +182,12 @@ def jumpCF():
     else:
         print("end jumpCF")
 
+
 def init():
     try:
         # show my public ip
-        ip = requests.get('https://checkip.amazonaws.com').text.strip()
-        print("[My Public IP]", ip)
+        # ip = requests.get('https://checkip.amazonaws.com').text.strip()
+        # print("[My Public IP]", ip)
 
         # create chrome driver
         # Options = webdriver.ChromeOptions()
@@ -199,11 +200,11 @@ def init():
         options.add_argument('--disable-gpu')
         options.add_argument('--disable-dev-shm-usage')
         # driver = webdriver.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
-        driver = uc.Chrome(options=options)
+        driver_chrome = uc.Chrome(options=options)
         # driver = uc.Chrome()
         delay()
         # go to website which have recaptcha protection
-        driver.get(urlLogin)
+        driver_chrome.get(urlLogin)
 
         # all_es = driver.find_elements(By.XPATH, '//*')
         # print("[ALL_elements] ", all_es)
@@ -211,11 +212,12 @@ def init():
         # jumpCF()
 
         # print(driver.find_elements(By.TAG_NAME, "body")[0].text)
-        return driver
+        return driver_chrome
 
     except Exception as e:
         print(e)
         # sys.exit("[-] Please update the chromedriver in the webdriver folder according to your chrome version:https://chromedriver.chromium.org/downloads")
+
 
 # main
 if __name__ == '__main__':
