@@ -11,7 +11,6 @@ import urllib
 import requests
 import undetected_chromedriver as uc
 
-from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -243,16 +242,14 @@ if __name__ == '__main__':
 
     # login
     print('click login')
-    while "login" not in str(driver.current_url):
-        print("URL: "+str(driver.current_url))
-    time.sleep(5)
-    # print("URL: "+driver.current_url)
+    # while "login" not in str(driver.current_url):
+    #     print("URL: "+str(driver.current_url))
+    # time.sleep(5)
     driver.find_element(By.NAME, 'login').click()
     time.sleep(10)
-    while "vps-info" not in str(driver.current_url):
-        print("URL: "+str(driver.current_url))
-        time.sleep(5)
-    # print("URL: "+driver.current_url)
+    # while "vps-info" not in str(driver.current_url):
+    #     print("URL: "+str(driver.current_url))
+    #     time.sleep(5)
     # Extend VPS link
     print('click Extend VPS')
     WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.LINK_TEXT, 'Extend VPS Expiration'))).click()
