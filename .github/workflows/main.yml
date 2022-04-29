@@ -29,6 +29,5 @@ jobs:
             PASSWORD: ${{ secrets.PASSWORD }}
             BARKKEY: ${{ secrets.BARKKEY }}
           run: |
-            curl https://hax.co.id/login
             python3 ./main.py
         
