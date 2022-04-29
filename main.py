@@ -205,7 +205,6 @@ def init():
         # jumpCF()
 
         print(driver.find_elements(By.TAG_NAME, "body")[0].text)
-        time.sleep(10)
         return driver
 
     except Exception as e:
@@ -217,7 +216,7 @@ if __name__ == '__main__':
     driver = init()
     # WebDriverWait(driver, 20).until(EC.frame_to_be_available_and_switch_to_it((By.CSS_SELECTOR,"iframeCssSelector")))
     # driver.switch_to.default_content()
-    time.sleep(10)
+    time.sleep(3)
     print('fill username')
     driver.find_element(By.XPATH, '//*[@id="text"]').send_keys(USERNAME)
     print('fill password')
@@ -227,7 +226,7 @@ if __name__ == '__main__':
     # reCAPTCHA
     print('do reCAPTCHA')
     reCAPTCHA()
-    time.sleep(10)
+    time.sleep(5)
     driver.switch_to.default_content()
 
     # login
@@ -240,6 +239,7 @@ if __name__ == '__main__':
     time.sleep(10)
     # input web address
     print('fill web address')
+    print(driver.find_elements(By.TAG_NAME, "body")[0].text)
     driver.find_element(By.XPATH, '//*[@id="web_address"]').send_keys('hax.co.id')
     # captcha
     print('do CAPTCHA')
