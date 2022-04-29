@@ -9,6 +9,7 @@ import time
 import random
 import urllib
 import requests
+import cloudscraper
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -162,6 +163,12 @@ def diffPlatformDriverPath():
 
 def jumpCF():
     flag = True
+
+    scraper = cloudscraper.create_scraper()  # returns a CloudScraper instance
+    # Or: scraper = cloudscraper.CloudScraper()  # CloudScraper inherits from requests.Session
+    scraper.get(urlLogin)
+    # print(scraper.get(urlLogin).text)  # => "<!DOCTYPE html><html><head>..."
+
     try:
         print("start jumpCF")
         driver.find_elements(By.CLASS_NAME, "cf-browser-verification")[0]
@@ -187,11 +194,11 @@ try:
     driver = webdriver.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
     delay()
     # go to website which have recaptcha protection
+    jumpCF()
     driver.get(urlLogin)
 
     # all_es = driver.find_elements(By.XPATH, '//*')
     # print("[ALL_elements] ", all_es)
-    jumpCF()
 
     print(driver.find_elements(By.TAG_NAME, "body")[0].text)
     time.sleep(10)
