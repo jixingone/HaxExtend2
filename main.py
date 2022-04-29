@@ -110,7 +110,7 @@ def reCAPTCHA():
                 err = driver.find_elements(By.CLASS_NAME, 'rc-audiochallenge-error-message')[0]
                 if err.text == "" or err.value_of_css_property('display') == 'none':
                     print("[INFO] Success!")
-                    # driver.switch_to.default_content()
+                    driver.switch_to.default_content()
                     break
 
         except Exception as e:
@@ -160,30 +160,33 @@ def diffPlatformDriverPath():
     return path
 
 
-def jumpCF():
-    flag = True
+# def jumpCF():
+#     flag = True
+#
+#     ##
+#     # scraper = cloudscraper.create_scraper()  # returns a CloudScraper instance
+#     # # Or: scraper = cloudscraper.CloudScraper()  # CloudScraper inherits from requests.Session
+#     # sc = scraper.get(urlLogin)
+#     # print(sc.text)  # => "<!DOCTYPE html><html><head>..."
+#
+#     try:
+#         print("start jumpCF")
+#         driver.find_elements(By.CLASS_NAME, "cf-browser-verification")[0]
+#     except Exception as e:
+#         print("Exception jumpCF")
+#         flag = False
+#     if flag is True:
+#         print("while jumpCF")
+#         # print(driver.find_elements(By.TAG_NAME, "body")[0].text)
+#         time.sleep(10)
+#         jumpCF()
+#     else:
+#         print("end jumpCF")
 
-    ##
-    # scraper = cloudscraper.create_scraper()  # returns a CloudScraper instance
-    # # Or: scraper = cloudscraper.CloudScraper()  # CloudScraper inherits from requests.Session
-    # sc = scraper.get(urlLogin)
-    # print(sc.text)  # => "<!DOCTYPE html><html><head>..."
 
-    try:
-        print("start jumpCF")
-        driver.find_elements(By.CLASS_NAME, "cf-browser-verification")[0]
-    except Exception as e:
-        print("Exception jumpCF")
-        flag = False
-    if flag is True:
-        print("while jumpCF")
-        # print(driver.find_elements(By.TAG_NAME, "body")[0].text)
-        time.sleep(10)
-        jumpCF()
-    else:
-        print("end jumpCF")
-
-
+'''
+    selenium.webdriver更换成undetected_chromedriver，从而跳过cloudflare ddos check
+'''
 def init():
     try:
         # show my public ip
@@ -195,10 +198,9 @@ def init():
         options = uc.ChromeOptions()
         # 浏览器不提供可视化界面
         # options.add_argument('--headless')
+        # 隐私模式启动
         options.add_argument('--incognito')
         # options.add_argument('--disable-infobars')
-        # 隐藏正受到自动测试软件的控制
-        ## options.add_experimental_option("excludeSwitches", ["enable-automation"])
         # options.add_argument('--no-sandbox')
         # options.add_argument('--disable-gpu')
         # options.add_argument('--disable-dev-shm-usage')
@@ -239,20 +241,15 @@ if __name__ == '__main__':
     print('do reCAPTCHA')
     reCAPTCHA()
     time.sleep(10)
-    driver.switch_to.default_content()
 
     # login
     print('click login')
-    # while "login" not in str(driver.current_url):
-    #     print("URL: "+str(driver.current_url))
-    # time.sleep(5)
     driver.find_element(By.NAME, 'login').click()
     time.sleep(10)
-    driver.switch_to.default_content()
-    # while "vps-info" not in str(driver.current_url):
-    #     print("URL: "+str(driver.current_url))
-    #     time.sleep(5)
-    # Extend VPS link
+
+    # Extend VPS link |
+    # 此处click不知道为什么不跳转界面，所以导致报错：找不到web_address元素————————等待路过的大佬指点迷津！！
+    # 所以click干脆换成driver.get(url)的方式了
     print('click Extend VPS')
     # WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.LINK_TEXT, 'Extend VPS Expiration'))).click()
     # driver.find_element(By.LINK_TEXT, 'Extend VPS').click()
@@ -262,10 +259,10 @@ if __name__ == '__main__':
     #     print("URL: "+driver.current_url)
     #     time.sleep(5)
     time.sleep(10)
-    driver.switch_to.default_content()
+
     # input web address
     print('fill web address')
-    print(driver.find_elements(By.TAG_NAME, "body")[0].text)
+    # print(driver.find_elements(By.TAG_NAME, "body")[0].text)
     driver.find_element(By.XPATH, '//*[@id="web_address"]').send_keys('hax.co.id')
     # captcha
     print('do CAPTCHA')
@@ -278,15 +275,14 @@ if __name__ == '__main__':
     # print('do reCAPTCHA')
     # reCAPTCHA()
     # time.sleep(10)
-    # driver.switch_to.default_content()
 
     # submit_button (Renew VPS)
     print('click Renew VPS')
     driver.find_element(By.NAME, 'submit_button').click()
     time.sleep(15)
     print('copy text')
-    # body = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="response"]/div'))).text
-    body = driver.find_element(By.XPATH, '//*[@id="response"]/div').text
+    body = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="response"]/div'))).text
+    # body = driver.find_element(By.XPATH, '//*[@id="response"]/div').text
     # print('textBody:', body)
     delay()
     print('bark push')
