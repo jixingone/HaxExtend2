@@ -17,8 +17,6 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
 
 audioToTextDelay = 10
 delayTime = 2
@@ -189,7 +187,8 @@ def jumpCF():
 try:
     jumpCF()
     # create chrome driver
-    Options = webdriver.ChromeOptions()
+    # Options = webdriver.ChromeOptions()
+    Options = uc.ChromeOptions()
     Options.add_argument('--headless')
     Options.add_argument('--no-sandbox')
     Options.add_argument('--disable-gpu')
