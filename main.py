@@ -9,7 +9,7 @@ import time
 import random
 import urllib
 import requests
-import cloudscraper
+# import cloudscraper
 import undetected_chromedriver as uc
 
 from selenium import webdriver
@@ -165,10 +165,11 @@ def diffPlatformDriverPath():
 def jumpCF():
     flag = True
 
-    scraper = cloudscraper.create_scraper()  # returns a CloudScraper instance
-    # Or: scraper = cloudscraper.CloudScraper()  # CloudScraper inherits from requests.Session
-    sc = scraper.get(urlLogin)
-    print(sc.text)  # => "<!DOCTYPE html><html><head>..."
+    ##
+    # scraper = cloudscraper.create_scraper()  # returns a CloudScraper instance
+    # # Or: scraper = cloudscraper.CloudScraper()  # CloudScraper inherits from requests.Session
+    # sc = scraper.get(urlLogin)
+    # print(sc.text)  # => "<!DOCTYPE html><html><head>..."
 
     try:
         print("start jumpCF")
@@ -179,7 +180,7 @@ def jumpCF():
     if flag is True:
         print("while jumpCF")
         # print(driver.find_elements(By.TAG_NAME, "body")[0].text)
-        time.sleep(6)
+        time.sleep(10)
         jumpCF()
     else:
         print("end jumpCF")
