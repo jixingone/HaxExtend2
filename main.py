@@ -252,7 +252,8 @@ if __name__ == '__main__':
     #     time.sleep(5)
     # Extend VPS link
     print('click Extend VPS')
-    WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.LINK_TEXT, 'Extend VPS Expiration'))).click()
+    # WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.LINK_TEXT, 'Extend VPS Expiration'))).click()
+    driver.find_elements(By.LINK_TEXT, 'Extend VPS Expiration').click()
     # print("URL: "+driver.current_url)
     # while "vps-renew" not in driver.current_url:
     #     print("URL: "+driver.current_url)
