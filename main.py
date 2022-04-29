@@ -194,11 +194,14 @@ def init():
         options = uc.ChromeOptions()
         # 浏览器不提供可视化界面
         options.add_argument('--headless')
+        options.add_argument('--incognito')
+        options.add_argument('--disable-infobars')
         # 隐藏正受到自动测试软件的控制
-        # options.add_experimental_option("excludeSwitches", ["enable-automation"])
-        options.add_argument('--no-sandbox')
-        options.add_argument('--disable-gpu')
-        options.add_argument('--disable-dev-shm-usage')
+        ## options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        # options.add_argument('--no-sandbox')
+        # options.add_argument('--disable-gpu')
+        # options.add_argument('--disable-dev-shm-usage')
+
         # driver = webdriver.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
         driver_chrome = uc.Chrome(options=options)
         # driver = uc.Chrome()
