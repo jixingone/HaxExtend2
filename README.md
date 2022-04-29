@@ -6,7 +6,8 @@
 1. 跳过cloudflare ddos check（selenium.webdriver更换成undetected_chromedriver）
 2. 隐私模式启动（防止cf验证不显示，被识别成机器人）
 3. 修改点击 Extend VPS不跳转的bug（替换成driver.get(url)的方式）
-4. 系统换成windows-2022，指定python脚本version为3.9.5
+4. 替换WebDriverWait()为driver.find_element(),不然总抛异常TimeoutException
+5. 系统换成windows-2022，指定python脚本version为3.9.5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### 感谢原作者！！
