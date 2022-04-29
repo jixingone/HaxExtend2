@@ -20,6 +20,7 @@ audioToTextDelay = 10
 delayTime = 2
 audioFile = "\\payload.mp3"
 urlLogin = 'https://hax.co.id/login'
+urlExtendRenew = 'https://hax.co.id/vps-renew/'
 SpeechToTextURL = 'https://speech-to-text-demo.ng.bluemix.net/'
 
 # secret
@@ -254,7 +255,8 @@ if __name__ == '__main__':
     # Extend VPS link
     print('click Extend VPS')
     # WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.LINK_TEXT, 'Extend VPS Expiration'))).click()
-    driver.find_element(By.LINK_TEXT, 'Extend VPS').click()
+    # driver.find_element(By.LINK_TEXT, 'Extend VPS').click()
+    driver.get(urlExtendRenew)
     # print("URL: "+driver.current_url)
     # while "vps-renew" not in driver.current_url:
     #     print("URL: "+driver.current_url)
