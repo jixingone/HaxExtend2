@@ -185,6 +185,7 @@ def jumpCF():
 
 
 try:
+    jumpCF()
     # create chrome driver
     Options = webdriver.ChromeOptions()
     Options.add_argument('--headless')
@@ -194,7 +195,6 @@ try:
     driver = webdriver.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
     delay()
     # go to website which have recaptcha protection
-    jumpCF()
     driver.get(urlLogin)
 
     # all_es = driver.find_elements(By.XPATH, '//*')
