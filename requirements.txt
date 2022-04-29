@@ -1,5 +1,4 @@
 requests
 urllib3
 selenium
-cloudscraper
 undetected-chromedriver

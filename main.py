@@ -9,7 +9,6 @@ import time
 import random
 import urllib
 import requests
-# import cloudscraper
 import undetected_chromedriver as uc
 
 from selenium import webdriver
@@ -239,9 +238,10 @@ if __name__ == '__main__':
     # Extend VPS link
     print('click Extend VPS')
     WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.LINK_TEXT, 'Extend VPS Expiration'))).click()
-    while "vps-renew" not in driver.current_url:
-        print("URL: "+driver.current_url)
-        time.sleep(5)
+    print("URL: "+driver.current_url)
+    # while "vps-renew" not in driver.current_url:
+    #     print("URL: "+driver.current_url)
+    #     time.sleep(5)
 
     time.sleep(10)
     # input web address
