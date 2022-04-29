@@ -201,7 +201,9 @@ def init():
 
         # all_es = driver.find_elements(By.XPATH, '//*')
         # print("[ALL_elements] ", all_es)
-        jumpCF()
+
+        # jumpCF()
+
         print(driver.find_elements(By.TAG_NAME, "body")[0].text)
         time.sleep(10)
         return driver
@@ -213,7 +215,8 @@ def init():
 # main
 if __name__ == '__main__':
     driver = init()
-    driver.switch_to.default_content()
+    WebDriverWait(driver, 20).until(EC.frame_to_be_available_and_switch_to_it((By.CSS_SELECTOR,"iframeCssSelector")))
+    # driver.switch_to.default_content()
     time.sleep(10)
     print('fill username')
     driver.find_element(By.XPATH, '//*[@id="text"]').send_keys(USERNAME)
