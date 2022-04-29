@@ -10,6 +10,7 @@ import random
 import urllib
 import requests
 import cloudscraper
+import undetected_chromedriver as uc
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -192,7 +193,8 @@ try:
     Options.add_argument('--no-sandbox')
     Options.add_argument('--disable-gpu')
     Options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
+    # driver = webdriver.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
+    driver = uc.Chrome(executable_path=diffPlatformDriverPath(), options=Options)
     delay()
     # go to website which have recaptcha protection
     driver.get(urlLogin)
