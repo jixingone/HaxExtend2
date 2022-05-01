@@ -280,8 +280,8 @@ if __name__ == '__main__':
     # submit_button (Renew VPS)
     print('click Renew VPS')
     driver.find_element(By.NAME, 'submit_button').click()
-    time.sleep(15)
-    driver.switch_to.default_content()
+    time.sleep(16)
+    # driver.switch_to.default_content()
 
     print('copy text')
     # body = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="response"]/div'))).text
