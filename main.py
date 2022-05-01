@@ -258,7 +258,7 @@ if __name__ == '__main__':
     # while "vps-renew" not in driver.current_url:
     #     print("URL: "+driver.current_url)
     #     time.sleep(5)
-    time.sleep(10)
+    time.sleep(16)
     driver.switch_to.default_content()
 
     # input web address
