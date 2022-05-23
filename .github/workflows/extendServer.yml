@@ -1,4 +1,4 @@
-name: 'WoidenExtend'
+name: 'ExtendServer'
 
 on:
   #push:
@@ -26,9 +26,9 @@ jobs:
             pip3 install -r ./requirements.txt
         - name: 'Working'
           env:
-            USERNAME: ${{ secrets.USERNAME }}
+            USERNAME: ${{ secrets.EXTENDSERVERUSERNAME }}
             PASSWORD: ${{ secrets.PASSWORD }}
             BARKKEY: ${{ secrets.BARKKEY }}
           run: |
-            python3 ./woiden.py
+            python3 ./main.py
         
