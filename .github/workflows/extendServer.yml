@@ -4,7 +4,7 @@ on:
   #push:
   schedule:
     # run every 3 days on UTC 1/2/3am (9/10/11am CN time)
-     - cron: '15 1,2,3 */3 * *'
+     - cron: '15 4,5,6 */3 * *'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
